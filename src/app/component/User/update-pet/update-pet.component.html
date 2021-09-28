@@ -1,0 +1,34 @@
+<h1 style="text-align: center">Update Pet !</h1>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="petsForm">
+    <p>
+      <a>Name Pets : </a>
+      <input type="text" formControlName="name" required>
+    </p>
+    <p>
+      <a>Price Pets : </a>
+      <input type="number" formControlName="price" required>
+    </p>
+    <p>
+      <a>Avatar : </a><br/>
+      <input type="file" id="avatar" #fileUploader (change)="showPreview($event)">
+      <img [src]="imgSrc" (click)="fileUploader.click()"/>
+      <img [src]="petsForm.get('avatar')?.value" *ngIf="imgSrc == null"/>
+    </p>
+    <p>
+      <a>Species</a><br/>
+      <select formControlName="species">
+        <option *ngFor="let specie of species" [value]="specie.id" [selected]="specie.id == petsForm.get('spicesId')?.value">{{specie.name}}</option>
+      </select>
+    </p>
+    <p>
+      <a>Description Pets : </a>
+      <input type="text" formControlName="description" required>
+    </p>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button cdkFocusInitial (click)="update()" >Ok</button>
+    </div>
+  </form>
+</mat-dialog-content>

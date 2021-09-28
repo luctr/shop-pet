@@ -1,0 +1,13 @@
+<p>upload works!</p>
+<div class="mt-lg-4 container">
+  <br>
+  <div class="form-group">
+    <input type="file" id="avatar" #fileUploader (change)="showPreview($event)">
+    <label for="avatar">Choose file</label>
+    <button (click)="submit()">Lưu</button>
+  </div>
+</div>
+<img [src]="imgSrc" (click)="fileUploader.click()"/>
+
+
+

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="grid wide">
+    <div class="row mt-3">
+      <div class="col-3 l-3"  *ngFor="let pet of pets">
+        <mat-card class="example-card" >
+          <mat-card-header >
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{pet.name}}</mat-card-title>
+            <mat-card-subtitle>{{pet.species?.name}}</mat-card-subtitle>
+          </mat-card-header>
+
+          <div>
+            <img mat-card-image style="height: 200px" src="{{pet.avatar}}" alt="Photo of a Shiba Inu">
+          </div>
+          <mat-card-content>
+            <h3>Description : </h3>
+            <p>
+              {{pet.description}}
+            </p>
+          </mat-card-content>
+          <mat-divider></mat-divider>
+          <mat-card-actions>
+<!--            <a mat-button (click)="openDialogUpdate()" >Update</a>-->
+<!--            <a mat-button>Details</a>-->
+            <button mat-button [matMenuTriggerFor]="menu">Menu Action</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openDialogUpdate(pet.id)">Update</button>
+              <button mat-menu-item (click)="openDialogDelete(pet.id)">Delete</button>
+              <button mat-menu-item routerLink="/details">Details</button>
+            </mat-menu>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

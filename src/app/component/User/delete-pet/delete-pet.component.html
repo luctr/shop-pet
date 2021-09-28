@@ -1,0 +1,44 @@
+<mat-dialog-content class="mat-typography">
+  <mat-card>
+  <div style="color: blueviolet">
+    <h1>Delete Pet!</h1>
+    <mat-divider></mat-divider>
+  </div>
+  <p>
+    <img [src]="petsForm.get('avatar')?.value"/>
+  </p>
+  <mat-divider></mat-divider>
+
+
+    <form [formGroup]="petsForm">
+      <p>
+        <a>Name Pets : </a>
+        <input type="text" formControlName="name" readonly/>
+      </p>
+      <p>
+        <a>Price Pets : </a>
+        <input type="number" formControlName="price" readonly>
+      </p>
+
+      <p>
+        <a>Species</a><br/>
+        <select formControlName="spices">
+          <option *ngFor="let specie of species" [value]="specie.id"
+                  [selected]="specie.id == petsForm.get('spicesId')?.value" disabled>{{specie.name}}</option>
+        </select>
+      </p>
+      <p>
+        <a>Description Pets : </a>
+        <input type="text" formControlName="description" readonly>
+      </p>
+
+    </form>
+
+  <mat-divider></mat-divider>
+  <div mat-dialog-actions style="color: burlywood">
+    <button mat-button (click)="delete()">Delete</button>
+    <button mat-button (click)="onNoClick()">Quay Lại</button>
+  </div>
+</mat-card>
+</mat-dialog-content>
+
