@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container" style="background-color: skyblue">
+  <div class="row">
+    <div class="col-12" style="margin-top: 20px">
+      <mat-card style="text-align: center"><h2>Form Register</h2></mat-card>
+      <mat-card style="margin: 50px;text-align: center">
+        <form  [formGroup]="signUpForm" (ngSubmit)="signUp()">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="name">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Name</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="username">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint style="color: red" *ngIf="signUpForm.value.username.length > 4">User Name Tối Thiểu 4 Ký Tự</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Placeholder" formControlName="password">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint style="color: red" *ngIf="signUpForm.value.password.length > 4">Password Tối Thiểu 4 Ký Tự</mat-hint>
+            </mat-form-field>
+          </p>
+        <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="phoneNumber">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint style="color: red">Phone Number : phải theo định dạng +84*********</mat-hint>
+            </mat-form-field>
+          </p>
+
+        <a mat-raised-button style="margin-right: 10px"routerLink="/login">Login</a>
+        <a></a>
+        <button mat-raised-button color="accent" style="margin-left:10px">Sign Up</button>
+
+        <!--        <button mat-raised-button ></button>-->
+      </form>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

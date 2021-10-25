@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Species} from "../../model/species";
-import {Pet} from "../../model/pet";
+import {Category} from "../../../model/category";
+import {Product} from "../../../model/product";
 import {FormControl, FormGroup} from "@angular/forms";
-import {PetService} from "../../service/pet.service";
+import {ProductService} from "../../../service/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SperciesService} from "../../service/spercies.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import {CategoryService} from "../../../service/category.service";
 
 @Component({
   selector: 'app-delete-pet',
@@ -18,50 +18,50 @@ export class DeletePetComponent implements OnInit {
 
   imgSrc: any = null;
 
-  species: Species[] = [];
+  species: Category[] = [];
 
   selectedImage: any = null;
 
   url: any;
 
-  pets: Pet = {}
+  product: Product = {}
 
   // @ts-ignore
-  petsForm: FormGroup = new FormGroup({});
+  productForm: FormGroup = new FormGroup({});
 
   constructor(public dialogRef: MatDialogRef<DeletePetComponent>,
-              private petService: PetService,
+              private petService: ProductService,
               private activeRouter: ActivatedRoute,
-              private speciesService: SperciesService,
+              private speciesService: CategoryService,
               private router: Router,) {
   }
 
   ngOnInit(): void {
-    this.getAllSpecies();
+    this.getAllCtegories();
     this.id = Number(localStorage.getItem('id'));
-    this.petsForm = new FormGroup({
+    this.productForm = new FormGroup({
       name: new FormControl(''),
       avatar: new FormControl(''),
       price: new FormControl(0),
       spices: new FormControl(),
       description: new FormControl(''),
     })
-    this.getByIdPet(this.id)
+    this.getByIdProduct(this.id)
   }
 
-  getByIdPet(id: number) {
+  getByIdProduct(id: number) {
     this.petService.getByIdPet(id).subscribe(data => {
-      this.petsForm = new FormGroup({
+      this.productForm = new FormGroup({
         name: new FormControl(data.name),
         avatar: new FormControl(data.avatar),
         price: new FormControl(data.price),
-        spices: new FormControl(data.species?.id),
+        spices: new FormControl(data.category?.id),
         description: new FormControl(data.description),
       })
     })
   }
 
-  getAllSpecies() {
+  getAllCtegories() {
     this.speciesService.findAll().subscribe((data) => {
       this.species = data
     })

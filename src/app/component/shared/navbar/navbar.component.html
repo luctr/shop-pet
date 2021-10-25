@@ -1,0 +1,50 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span routerLink=""><mat-icon>econ</mat-icon>Shop Product</span>
+  <div class="spacer"></div>
+  <a mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    Home</a>
+  <a mat-button (click)="open()">Create</a>
+<!--  <a mat-button>Category</a>-->
+  <button mat-button [matMenuTriggerFor]="Category">Category</button>
+  <mat-menu #Category="matMenu">
+    <button mat-menu-item *ngFor="let s of categories" [value]="s.id">{{s.name}}</button>
+
+  </mat-menu>
+  <a mat-button>
+    <mat-icon>
+    <span class="material-icons-outlined">
+       shopping_cart
+    </span>
+    </mat-icon>
+  </a>
+
+  <div>
+    <input mat-input routerLink="" style="color: aliceblue">
+    <a mat-button>
+      <mat-icon>search</mat-icon>
+      Search</a>
+  </div>
+
+<!--  <a mat-raised-button color="accent">-->
+<!--    <mat-icon>login</mat-icon>-->
+<!--    Sign Up</a>-->
+  <button mat-raised-button [matMenuTriggerFor]="user" color="accent" *ngIf="userName != ''"><mat-icon>manage_accounts</mat-icon>{{userName}}</button>
+  <mat-menu #user="matMenu">
+    <button mat-menu-item routerLink="/login">
+      <mat-icon>perm_identity</mat-icon>
+
+      Profile
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Log Out
+    </button>
+  </mat-menu>
+
+  <button mat-raised-button [matMenuTriggerFor]="menu" color="accent" *ngIf="userName == ''"><mat-icon>no_accounts</mat-icon>Sign Up/Register</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/login">Sign In</button>
+    <button mat-menu-item routerLink="/register">Sign Up</button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,32 @@
+<h1 style="text-align: center">Create Product!</h1>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="productsForm" (ngSubmit)="create()">
+ <p>
+   <a>Name Pets : </a>
+   <input type="text" formControlName="name" required>
+ </p>
+  <p>
+   <a>Price Pets : </a>
+   <input type="number" formControlName="price" required>
+ </p>
+  <p>
+    <a>Avatar : </a><br/>
+    <input type="file" id="avatar" #fileUploader (change)="showPreview($event)">
+    <img [src]="imgSrc" (click)="fileUploader.click()"/>
+  </p>
+  <p>
+    <a>Category</a><br/>
+    <select formControlName="speci">
+      <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+    </select>
+  </p>
+  <p>
+    <a>Description Pets : </a>
+    <input type="text" formControlName="description" required>
+  </p>
+  <div mat-dialog-actions>
+    <a mat-button (click)="onNoClick()">No Thanks</a>
+    <button mat-button >Ok</button>
+  </div>
+</form>
+</mat-dialog-content>

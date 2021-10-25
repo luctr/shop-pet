@@ -5,31 +5,31 @@
   <div class="row">
     <div class="col-6"><p>
 
-        <img [src]="petsForm.get('avatar')?.value"/>
+        <img [src]="productsForm.get('avatar')?.value"/>
     </p></div>
     <div class="col-6">
       <mat-card style="text-align: center">
         <div style="color: blueviolet">
-          <h1>Details Pet!</h1>
+          <h1>Details Product!</h1>
           <mat-divider></mat-divider>
         </div>
 
         <mat-dialog-content class="mat-typography">
-          <form [formGroup]="petsForm">
-            <p>
-              <a>Name Pets : </a>
-              <input type="text" formControlName="name" readonly/>
-            </p>
-            <p>
-              <a>Price Pets : </a>
-              <input type="number" formControlName="price" readonly>
-            </p>
+          <form [formGroup]="productsForm">
+<!--            <p>-->
+<!--              <a>Name Pets : </a>-->
+<!--              <input type="text" formControlName="name" readonly/>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--              <a>Price Pets : </a>-->
+<!--              <input type="number" formControlName="price" readonly>-->
+<!--            </p>-->
 
             <p>
-              <a>Species</a><br/>
+              <a>Category</a><br/>
               <select formControlName="spicesId">
                 <option *ngFor="let specie of species" [value]="specie.id"
-                        [selected]="specie.id == petsForm.get('spicesId')?.value" disabled>{{specie.name}}</option>
+                        [selected]="specie.id == productsForm.get('spicesId')?.value" disabled>{{specie.name}}</option>
               </select>
             </p>
             <p>

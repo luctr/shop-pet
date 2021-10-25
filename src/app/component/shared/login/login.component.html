@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<div class="container" style="background-color: skyblue">
+  <div class="row">
+    <div class="col-12" style="margin-top: 20px">
+      <mat-card style="text-align: center"><h2>Form Login</h2></mat-card>
+      <mat-card style="margin: 50px;text-align: center">
+        <form class="form-login" [formGroup]="loginForm" (ngSubmit)="login()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="username">
+            <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>User Name</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Placeholder" formControlName="password">
+            <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+            <!--            < <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+<!--            <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+<!--          </button>-->
+<!--            <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>-->
+<!--            <mat-error *ngIf="password.hasError('minlength')">The password must more than 6 character</mat-error>-->
+            <mat-hint>Password</mat-hint>
+          </mat-form-field>
+        </p>
+<!--      </mat-card>-->
+<!--      <mat-card style="text-align: center">-->
+        <a mat-raised-button routerLink="/">Quiz</a>
+        <a></a>
+        <button mat-raised-button color="accent" style="margin-left:10px" >Login</button>
+
+        <a mat-raised-button color="accent" style="margin-left:10px" routerLink="/register">Register</a>
+        <!--        <button mat-raised-button ></button>-->
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

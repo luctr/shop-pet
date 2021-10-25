@@ -1,35 +1,67 @@
+<mat-card style="text-align: center;margin-top: 50px;background-color: #999999"><h2>Product New</h2></mat-card>
+
 <div class="container">
   <div class="grid wide">
     <div class="row mt-3">
-      <div class="col-3 l-3"  *ngFor="let pet of pets">
-        <mat-card class="example-card" >
-          <mat-card-header >
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{pet.name}}</mat-card-title>
-            <mat-card-subtitle>{{pet.species?.name}}</mat-card-subtitle>
-          </mat-card-header>
+<!--      <div class="col-3 l-3"  *ngFor="let pet of pets">-->
+<!--        <mat-card class="example-card" >-->
+<!--          <mat-card-header >-->
+<!--            <div mat-card-avatar class="example-header-image"></div>-->
+<!--            <mat-card-title>{{pet.name}}</mat-card-title>-->
+<!--            <mat-card-subtitle>{{pet.species?.name}}</mat-card-subtitle>-->
+<!--          </mat-card-header>-->
 
-          <div>
-            <img mat-card-image style="height: 200px" src="{{pet.avatar}}" alt="Photo of a Shiba Inu">
+<!--          <div>-->
+<!--            <img mat-card-image style="height: 200px" src="{{pet.avatar}}" alt="Photo of a Shiba Inu">-->
+<!--          </div>-->
+<!--          <mat-card-content>-->
+<!--            <h3>Description : </h3>-->
+<!--            <p>-->
+<!--              {{pet.description}}-->
+<!--            </p>-->
+<!--          </mat-card-content>-->
+<!--          <mat-divider></mat-divider>-->
+<!--          <mat-card-actions>-->
+<!--&lt;!&ndash;            <a mat-button (click)="openDialogUpdate()" >Update</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a mat-button>Details</a>&ndash;&gt;-->
+<!--            <button mat-button [matMenuTriggerFor]="menu">Menu Action</button>-->
+<!--            <mat-menu #menu="matMenu">-->
+<!--              <button mat-menu-item (click)="openDialogUpdate(pet.id)">Update</button>-->
+<!--              <button mat-menu-item (click)="openDialogDelete(pet.id)">Delete</button>-->
+<!--              <button mat-menu-item routerLink="/details">Details</button>-->
+<!--            </mat-menu>-->
+<!--          </mat-card-actions>-->
+<!--        </mat-card>-->
+<!--      </div>-->
+      <div class="col-lg-3" *ngFor="let p of products" style="margin-top:30px">
+        <div class="product-item">
+          <div class="product-title">
+            <a href="#">{{p.name}}</a>
+            <div class="ratting">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
           </div>
-          <mat-card-content>
-            <h3>Description : </h3>
-            <p>
-              {{pet.description}}
-            </p>
-          </mat-card-content>
-          <mat-divider></mat-divider>
-          <mat-card-actions>
-<!--            <a mat-button (click)="openDialogUpdate()" >Update</a>-->
-<!--            <a mat-button>Details</a>-->
-            <button mat-button [matMenuTriggerFor]="menu">Menu Action</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="openDialogUpdate(pet.id)">Update</button>
-              <button mat-menu-item (click)="openDialogDelete(pet.id)">Delete</button>
-              <button mat-menu-item routerLink="/details">Details</button>
-            </mat-menu>
-          </mat-card-actions>
-        </mat-card>
+          <div class="product-image">
+            <a href="product-detail.html">
+              <img src="{{p.avatar}}" alt="Product Image" style="width: 250px;height: 170px">
+            </a>
+            <div class="product-action">
+              <a href="#"><i class="fa fa-cart-plus"></i></a>
+              <!--        <a href="#"><i class="fa fa-heart"></i></a>-->
+              <!--        <a href="#"><i class="fa fa-search"></i></a>-->
+            </div>
+          </div>
+          <div class="product-price">
+            <h3><span></span>{{p.category?.name}}</h3>
+            <br>
+            <h3><span>$</span>{{p.price}}</h3>
+            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

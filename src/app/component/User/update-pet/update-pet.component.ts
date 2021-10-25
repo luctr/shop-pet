@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Species} from "../../model/species";
+import {Category} from "../../../model/category";
 import {MatDialogRef} from "@angular/material/dialog";
-import {PetService} from "../../service/pet.service";
+import {ProductService} from "../../../service/product.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {Pet} from "../../model/pet";
-import {SperciesService} from "../../service/spercies.service";
+import {Product} from "../../../model/product";
 import {finalize} from "rxjs/operators";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {CategoryService} from "../../../service/category.service";
+import {AngularFireStorage} from "@angular/fire/storage";
 
 @Component({
   selector: 'app-update-pet',
@@ -20,31 +20,31 @@ export class UpdatePetComponent implements OnInit {
 
   imgSrc: any = null;
 
-  species: Species[] = [];
+  categories: Category[] = [];
 
   selectedImage: any = null;
 
-  speci: Species = {};
+  category: Category = {};
 
   url: any;
 
-  pets: Pet = {}
+  product: Product = {}
 
-  petsForm: FormGroup = new FormGroup({})
+  petsForm1: FormGroup = new FormGroup({})
 
   constructor(public dialogRef: MatDialogRef<UpdatePetComponent>,
-              private petService: PetService,
+              private petService: ProductService,
               private activeRouter: ActivatedRoute,
-              private speciesService: SperciesService,
+              private speciesService: CategoryService,
               private storage: AngularFireStorage) {
 
   }
 
   ngOnInit(): void {
-    this.getAllSpecies();
+    this.getAllCategories();
     this.id = Number(localStorage.getItem('id'));
-    this.getByIdPet(this.id)
-    this.petsForm = new FormGroup({
+    this.getByIdProduct(this.id)
+    this.petsForm1 = new FormGroup({
       name: new FormControl(''),
       price: new FormControl(0),
       species: new FormControl(1),
@@ -57,18 +57,18 @@ export class UpdatePetComponent implements OnInit {
   }
 
   update() {
-    this.pets = {
+    this.product = {
       id: this.id,
-      name: this.petsForm.value.name,
-      price: this.petsForm.value.price,
+      name: this.petsForm1.value.name,
+      price: this.petsForm1.value.price,
       avatar: this.url,
-      species: this.petsForm.value.species = {
-        id: this.petsForm.value.species
+      category: this.petsForm1.value.species = {
+        id: this.petsForm1.value.species
       },
-      description: this.petsForm.value.description
+      description: this.petsForm1.value.description
     }
-    console.log(this.petsForm.value.species)
-    this.petService.updatePet(this.pets).subscribe(data => {
+    console.log(this.petsForm1.value.species)
+    this.petService.updatePet(this.product).subscribe(data => {
       window.location.reload()
     })
     this.onNoClick()
@@ -88,21 +88,21 @@ export class UpdatePetComponent implements OnInit {
     }
   }
 
-  getByIdPet(id: number) {
+  getByIdProduct(id: number) {
     this.petService.getByIdPet(id).subscribe(data => {
-      this.petsForm = new FormGroup({
+      this.petsForm1 = new FormGroup({
         name: new FormControl(data.name),
         avatar: new FormControl(data.avatar),
         price: new FormControl(data.price),
-        species: new FormControl(data.species?.id),
+        species: new FormControl(data.category?.id),
         description: new FormControl(data.description),
       })
     })
   }
 
-  getAllSpecies() {
+  getAllCategories() {
     this.speciesService.findAll().subscribe((data) => {
-      this.species = data
+      this.categories = data
     })
   }
 

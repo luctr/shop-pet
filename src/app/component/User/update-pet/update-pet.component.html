@@ -1,7 +1,7 @@
-<h1 style="text-align: center">Update Pet !</h1>
+<h1 style="text-align: center">Update Product !</h1>
 <mat-divider></mat-divider>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="petsForm">
+  <form [formGroup]="petsForm1">
     <p>
       <a>Name Pets : </a>
       <input type="text" formControlName="name" required>
@@ -14,12 +14,12 @@
       <a>Avatar : </a><br/>
       <input type="file" id="avatar" #fileUploader (change)="showPreview($event)">
       <img [src]="imgSrc" (click)="fileUploader.click()"/>
-      <img [src]="petsForm.get('avatar')?.value" *ngIf="imgSrc == null"/>
+      <img [src]="petsForm1.get('avatar')?.value" *ngIf="imgSrc == null"/>
     </p>
     <p>
-      <a>Species</a><br/>
+      <a>Category</a><br/>
       <select formControlName="species">
-        <option *ngFor="let specie of species" [value]="specie.id" [selected]="specie.id == petsForm.get('spicesId')?.value">{{specie.name}}</option>
+        <option *ngFor="let specie of categories" [value]="specie.id" [selected]="specie.id == petsForm1.get('spicesId')?.value">{{specie.name}}</option>
       </select>
     </p>
     <p>
